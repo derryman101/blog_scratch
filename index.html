@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/admin_style.css">
+
+    <title>blog</title>
+</head>
+
+<body>
+
+    <header>
+        <dv class="nav-overlay"></dv>
+        <span role="button" class="menu-icon">
+            <ion-icon name="menu-outline"></ion-icon>
+        </span>
+        <a href="a" class="logo-wrapper td-none">
+            <div><span>B</span>LOG</div>
+        </a>
+
+        <nav>
+        <div class="search-item">
+            <span class="search-icon" role="button">
+                <ion-icon name="search-outline"></ion-icon>
+            </span>
+            <form action="index.html" method="post" class="header-search-form hide">
+                <input type="text" name="search-term" placeholder="search this website..."
+                    class="input-control input-control-sm search-input">
+            </form>
+            </div>
+            <ul class="navmenu">
+                <li class="navitem"><a href="http://a">All Posts</a></li>
+                <li class="navitem"><a href="http://a">life lesson</a></li>
+                <li class="navitem"><a href="http://a">jornals</a></li>
+                <li class="navitem">
+                    <a href="#">best articles<ion-icon name="chevron-down-outline" class="navicon"></ion-icon></a>
+                    <ul class="dropdown">
+                        <li><a href="a">best of 2022</a></li>
+                        <li><a href="a">best of 2021</a></li>
+                        <li><a href="a">best of 2020</a></li>
+                        <li><a href="a">best of 2019</a></li>
+                    </ul>
+                </li>
+                <li class="navitem">
+                    <a href="http://a">register</a>
+                </li>
+                <li class="navitem"><a href="http://a">login</a></li>
+                <!--li class="navitem">
+                        <a href="#">
+                            <ion-icon name="person-circle-outline"class="navicon"></ion-icon>
+                            Awe malvin
+                            <ion-icon name="chevron-down-outline"class="navicon"></ion-icon>
+                        </a>
+                        <ul class="dropdown">
+                            <li><a href="a">dashboard</a></li>
+                            <li><a href="a">logout</a></li>
+                        </ul>
+                    </li> -->
+
+            </ul>
+        </nav>
+
+    </header>
+
+    <a href="./admin/dashboard.html">Go to dashboard</a>
+
+    <!--ion icon-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        // toggle search input
+        const mobileBreakpoint = 724;
+        const searchicon = document.querySelector('.search-icon');
+        const headersearchform = document.querySelector('.header-search-form');
+        const searchinput = document.querySelector('.search-input');
+        const logoWrapper = document.querySelector('.logo-wrapper');
+
+
+        function toggleSearchBar() {
+            searchicon.classList.toggle('hide');
+            headersearchform.classList.toggle('hide');
+            searchinput.focus();
+            if (window.innerWidth <= mobileBreakpoint) {
+                logoWrapper.classList.toggle('hide');    
+            }
+        }
+
+        searchicon.addEventListener("click", toggleSearchBar);
+
+        searchinput.addEventListener('blur', toggleSearchBar);
+
+        // navbar responsiveness
+        const menuIcon = document.querySelector('.menu-icon');
+        const navOverlay = document.querySelector('.nav-overlay');
+        const navMenu = document.querySelector('.navmenu');
+        const dropdown = document.querySelectorAll('.navitem .dropdown')
+
+        menuIcon.addEventListener('click', function () {
+            navMenu.classList.toggle('open');
+            navOverlay.classList.toggle('open');
+        });
+
+        navOverlay.addEventListener('click', function () {
+            navMenu.classList.remove('open');
+            navOverlay.classList.remove('open');
+        });
+
+        dropdown.forEach(dropdown=>{
+            const navItem = dropdown.closest('.navitem');
+            navItem.addEventListener('click', function () {
+                navItem.classList.toggle('active');
+                
+            })
+        })
+
+    </script>
+</body>
+
+</html>
